@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Himanshi ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      width: 90%;
+      max-width: 360px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    h2 {
+      color: #ff2e63;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    button {
+      background: #ff2e63;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 12px 22px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 6px;
+    }
+
+    button:hover {
+      background: #e91e63;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <h2>Himanshi ❤️</h2>
+  <p id="text">Do you like me? 😏</p>
+  <button onclick="next()">Yes 😌</button>
+  <button onclick="next()">Obviously ❤️</button>
+</div>
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8b0b4a9b26.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const messages = [
+    "Okay… how much do you like me? 😉",
+    "Enough to tolerate me forever? 😈",
+    "Himanshi, will you be my Valentine? ❤️🔥",
+    "YAYYY 😍💃 Come get your hug & kiss 💋"
+  ];
+
+  let step = 0;
+
+  function next() {
+    step++;
+    if (step < messages.length) {
+      document.getElementById("text").innerText = messages[step];
+    } else {
+      document.getElementById("card").innerHTML = `
+        <h2>💖 It’s a YES 💖</h2>
+        <p>Valentine just got officially hot 😏🔥</p>
+      `;
+    }
+  }
+
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
+  }, 400);
+</script>
+
+</body>
+</html>
